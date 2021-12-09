@@ -1,0 +1,7 @@
+---
+
+service:
+  flink-taskmanager:
+    enabled: true
+    running: true
+

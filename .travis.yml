@@ -1,0 +1,22 @@
+---
+dist: bionic
+language: python
+python: 3.8
+os: linux
+services:
+  - docker
+install:
+  - pip install pipenv
+  - pipenv sync
+
+script:
+  - pipenv run molecule -c molecule/molecule.yml test --all
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  email:
+    if: branch = main
+    on_success: change
+    on_failure: always
+    recipients:
+      - desarrollo.benders@idealista.com

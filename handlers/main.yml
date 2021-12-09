@@ -1,0 +1,8 @@
+---
+
+- name: restart flink
+  systemd:
+    name: "flink-{{ item }}"
+    state: restarted
+  when: flink_service_state != 'stopped'
+  with_items: "{{ flink_manager_type }}"

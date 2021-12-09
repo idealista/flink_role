@@ -1,0 +1,31 @@
+---
+
+flink_version: 1.14.2
+flink_user: flink
+flink_group: flink
+flink_service_state: started
+flink_service_enabled: true
+flink_install_path: "/opt/flink"
+flink_data_path: "/data/flink"
+flink_conf_path: "{{ flink_install_path }}/conf"
+flink_io_tmp_dirs: "{{ flink_data_path }}/io"
+flink_plugin_hadoop: true
+flink_python_active: true
+flink_extra_path:
+  - "{{ flink_io_tmp_dirs }}"
+
+flink_configuration:
+  jobmanager.rpc.address: "{{ hostvars['flink-master1']['ansible_default_ipv4']['address'] }}"
+  jobmanager.rpc.port: 6123
+  jobmanager.memory.process.size: 1600m
+  taskmanager.memory.process.size: 1728m
+  taskmanager.numberOfTaskSlots: 4
+  parallelism.default: 1
+  jobmanager.execution.failover-strategy: region
+  io.tmp.dirs: "{{ flink_io_tmp_dirs }}"
+  # Metrics
+  metrics.reporter.prometheus.class: org.apache.flink.metrics.prometheus.PrometheusReporter
+  metrics.reporter.prometheus.port: 9249
+
+flink_masters: [ "{{ hostvars['flink-master1']['ansible_default_ipv4']['address'] }}:8081" ]
+flink_slaves: [ "{{ hostvars['flink-worker1']['ansible_default_ipv4']['address'] }}" ]

@@ -1,0 +1,85 @@
+---
+
+## General
+flink_version: 1.14.2
+flink_scala_version: 2.12
+
+# Owner
+flink_user: flink
+flink_group: flink
+flink_uid: 789
+flink_gid: 790
+
+# Files & Paths
+flink_install_path: "/opt/flink"
+flink_conf_path: "/opt/flink/conf"
+flink_log_path: "/var/log/flink"
+flink_data_path: "/data/flink"
+flink_jobs_path: "{{ flink_data_path }}/jobs"
+# It is used for create directories, for example io.temp.dir, checkpoint.dir
+flink_extra_path: []
+
+# Download paths
+flink_mirror: "https://archive.apache.org/dist/flink"
+flink_package_name: "flink-{{ flink_version }}-bin-scala_{{ flink_scala_version }}"
+flink_package: "{{ flink_package_name }}.tgz"
+flink_bin_url: "{{ flink_mirror }}/flink-{{ flink_version }}/{{ flink_package }}"
+
+# Templates path
+flink_jobmanger_service_template_path: templates/flink-jobmanager.service.j2
+flink_taskmanager_service_template_path: templates/flink-taskmanager.service.j2
+flink_history_service_template_path: templates/flink-history.service.j2
+flink_conf_yaml_template_path: templates/flink-conf.yaml.j2
+flink_masters_template_path: templates/masters.j2
+flink_slaves_template_path: templates/slaves.j2
+
+### Configuration
+flink_configuration:
+    jobmanager.rpc.address: localhost
+    jobmanager.rpc.port: 6123
+    jobmanager.memory.process.size: 1600m
+    taskmanager.memory.process.size: 1728m
+    taskmanager.numberOfTaskSlots: 1
+    parallelism.default: 1
+    jobmanager.execution.failover-strategy: region
+
+flink_manager_type: [jobmanager, taskmanager, history]
+
+# Masters, host:port array
+flink_masters: ['localhost:8081']
+
+# Slaves, hosts array
+flink_slaves: ['localhost']
+
+### Log configuration
+# flink_log4j_template_path: templates/log4j.properties.j2
+# flink_log4j_console_template_path: templates/log4j-console.properties.j2
+# flink_log4j_cli_template_path: templates/log4j-cli.properties.j2
+
+## Service
+# start on boot
+flink_service_enabled: true
+# current state: started, stopped
+flink_service_state: started
+
+## Miscellaneous
+flink_force_reinstall: false
+
+## hadoop plugin
+flink_plugin_hadoop: false
+
+## python
+flink_python_active: false
+flink_python_libs:
+  - python3
+
+## jemalloc
+flink_jemalloc_active: true
+flink_jemalloc_libs: libjemalloc-dev
+flink_jemalloc_path: "/usr/lib/x86_64-linux-gnu/libjemalloc.so"
+
+# Requirements
+flink_required_libs:
+    - wget
+    - tar
+    - sudo

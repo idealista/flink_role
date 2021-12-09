@@ -1,0 +1,60 @@
+---
+
+file:
+  /opt/flink:
+    exists: true
+    filetype: directory
+    owner: flink
+    group: flink
+  /opt/flink/conf:
+    exists: true
+    filetype: directory
+    owner: flink
+    group: flink
+  /var/log/flink:
+    exists: true
+    filetype: directory
+    owner: flink
+    group: flink
+  /data/flink:
+    exists: true
+    filetype: directory
+    owner: flink
+    group: flink
+  /data/flink/jobs:
+    exists: true
+    filetype: directory
+    owner: flink
+    group: flink
+  /opt/flink/conf/log4j.properties:
+    exists: true
+    contains:
+      - idealista=INFO
+  /data/flink/archive:
+    exists: true
+    filetype: directory
+    owner: flink
+    group: flink
+
+service:
+  flink-jobmanager:
+    enabled: true
+    running: true
+  flink-taskmanager:
+    enabled: true
+    running: true
+  flink-history:
+    enabled: true
+    running: true
+
+command:
+  flinkversion:
+    exit-status: 0
+    exec: "/opt/flink/bin/flink -v"
+    stdout:
+      - "Version: 1.14.2"
+    stderr: []
+    timeout: 10000 # in milliseconds
+    skip: false
+
+

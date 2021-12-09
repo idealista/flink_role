@@ -1,0 +1,47 @@
+---
+
+- name: FLINK | Ensure flink group
+  group:
+    name: "{{ flink_group }}"
+    gid: "{{ flink_gid }}"
+
+- name: FLINK | Ensure flink user
+  user:
+    name: "{{ flink_user }}"
+    group: "{{ flink_group }}"
+    uid: "{{ flink_uid }}"
+    home: /bin/false
+    create_home: false
+    comment: "Apache Flink"
+
+- name: FLINK | Check flink version
+  command: bash -c "ls {{ flink_install_path }}/lib | grep 'flink-.*_{{ flink_scala_version }}-{{ flink_version }}.jar'"
+  register: flink_check
+  changed_when: false
+  ignore_errors: true
+  args:
+    chdir: "{{ flink_install_path }}/bin"
+
+- name: FLINK | Delete installation older
+  file:
+    path: "{{ flink_install_path }}"
+    state: absent
+  when: 'flink_force_reinstall or flink_check is failed or flink_check.stdout|length == 0'
+
+- name: FLINK | Create install path
+  file:
+    path: "{{ flink_install_path }}"
+    state: directory
+    owner: "{{ flink_user }}"
+    group: "{{ flink_group }}"
+    mode: 0755
+
+- name: FLINK | Untar flink
+  unarchive:
+    extra_opts: ['--strip-components=1']
+    src: "{{ flink_bin_url }}"
+    remote_src: true
+    dest: "{{ flink_install_path }}"
+    owner: "{{ flink_user }}"
+    group: "{{ flink_group }}"
+  when: 'flink_force_reinstall or flink_check is failed or flink_check.stdout|length == 0'

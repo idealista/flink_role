@@ -1,0 +1,30 @@
+---
+
+file:
+  /data/flink/io:
+    exists: true
+    filetype: directory
+    owner: {{ flink_user }}
+    group: {{ flink_group }}
+  /opt/flink/conf/flink-conf.yaml:
+    exists: true
+    contains:
+      - org.apache.flink.metrics.prometheus.PrometheusReporter
+      - 9249
+  /opt/flink/plugins/metrics-prometheus/flink-metrics-prometheus-1.14.2.jar:
+    exists: true
+
+http:
+  http://localhost:9249:
+    status: 200
+
+command:
+  flinkversion:
+    exit-status: 0
+    exec: /opt/flink/bin/flink -v
+    stdout:
+      - "Version: 1.14.2"
+    stderr: []
+    timeout: 10000 # in milliseconds
+    skip: false
+

@@ -1,0 +1,27 @@
+#  http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+# Define some default values that can be overridden by system properties.
+
+log4j.rootLogger=ERROR, flinkAppender
+
+log4j.appender.flinkAppender=org.apache.log4j.RollingFileAppender
+log4j.appender.flinkAppender.MaxFileSize=50MB
+log4j.appender.flinkAppender.MaxBackupIndex=4
+log4j.appender.flinkAppender.File={{ flink_log_path }}/flink.log
+log4j.appender.flinkAppender.layout=org.apache.log4j.PatternLayout
+log4j.appender.flinkAppender.layout.ConversionPattern=[%d] %p %m (%c)%n
+
+{% if flink_packages_log_level is defined %}
+{% for key, value in flink_packages_log_level.items() %}
+log4j.logger.{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+

@@ -1,0 +1,63 @@
+---
+
+platforms:
+  - name: flink-master1
+    image: idealista/jdk:11.0.12-bullseye-openjdk-headless
+    privileged: false
+    env:
+      JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    exposed_ports:
+      - 6123/tcp
+      - 8081/tcp
+    published_ports:
+      - 0.0.0.0:6123:6123/tcp
+      - 0.0.0.0:8081:8081/tcp
+    groups:
+      - masters
+    tmpfs:
+      - '/tmp'
+      - '/run'
+      - '/run/lock'
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: flink_network
+
+  - name: flink-worker1
+    image: idealista/jdk:11.0.12-bullseye-openjdk-headless
+    privileged: false
+    env:
+      JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    exposed_ports:
+      - 6123/tcp
+      - 8081/tcp
+    published_ports:
+      - 0.0.0.0:6124:6123/tcp
+      - 0.0.0.0:8082:8081/tcp
+    groups:
+      - workers
+    tmpfs:
+      - '/tmp'
+      - '/run'
+      - '/run/lock'
+    command: '/lib/systemd/systemd'
+    networks:
+      - name: flink_network
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+
+scenario:
+  name: multiplenodes
+
+verifier:
+  name: ansible

@@ -1,0 +1,36 @@
+---
+
+- name: FLINK | Check required var flink_manager_type
+  fail:
+    msg: "flink_manager_type is required. Values possible [jobmanager, taskmanager, history]"
+  when: flink_manager_type is undefined and flink_manager_type != 'jobmanager' and flink_manager_type != 'taskmanager' and flink_manager_type != 'history'
+
+- name: FLINK | Requirements
+  include: requirements.yml
+  tags:
+    - flink_requirements
+
+- name: FLINK | Install
+  include: install.yml
+  tags:
+    - flink_install
+
+- name: FLINK | Configure
+  include: config.yml
+  tags:
+    - flink_configure
+
+- name: FLINK | Plugins
+  include: plugins.yml
+  tags:
+    - flink_plugins
+
+- name: FLINK | Service
+  include: service.yml
+  tags:
+    - flink_service
+
+- name: FLINK | Jobs
+  include: jobs.yml
+  tags:
+    - flink_jobs

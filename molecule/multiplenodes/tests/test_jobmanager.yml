@@ -1,0 +1,7 @@
+---
+
+service:
+  flink-jobmanager:
+    enabled: true
+    running: true
+

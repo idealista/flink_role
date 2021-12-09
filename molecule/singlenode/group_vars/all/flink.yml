@@ -1,0 +1,33 @@
+---
+
+flink_version: 1.14.2
+flink_user: flink
+flink_group: flink
+flink_install_path: "/opt/flink"
+flink_conf_path: "/opt/flink/conf"
+flink_log_path: "/var/log/flink"
+flink_data_path: "/data/flink"
+flink_jobs_path: "{{ flink_data_path }}/jobs"
+flink_service_state: started
+flink_service_enabled: true
+flink_max_open_files: 2048
+
+flink_log4j_template_path: "{{ playbook_dir }}/templates/log4j.properties.j2"
+flink_packages_log_level:
+  idealista: INFO
+
+archive_path: "{{ flink_data_path }}/archive"
+flink_extra_path: ["{{ archive_path }}"]
+
+### Configuration
+flink_configuration:
+  jobmanager.rpc.address: localhost
+  jobmanager.rpc.port: 6123
+  jobmanager.memory.process.size: 1600m
+  taskmanager.memory.process.size: 1728m
+  taskmanager.numberOfTaskSlots: 1
+  parallelism.default: 1
+  jobmanager.execution.failover-strategy: region
+  jobmanager.archive.fs.dir: "file://{{ archive_path }}"
+  historyserver.archive.fs.dir: "file://{{ archive_path }}"
+

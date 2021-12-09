@@ -1,0 +1,9 @@
+---
+
+# Required packages, libs, etc
+- name: FLINK | Requirements | Install some packages
+  apt:
+    name: "{{ flink_required_libs }}"
+    state: present
+  tags:
+    - requirements

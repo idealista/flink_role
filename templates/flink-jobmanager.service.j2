@@ -1,0 +1,22 @@
+[Unit]
+Description=Apache Flink
+After=network.target
+
+[Service]
+Type=forking
+Restart=on-failure
+{% if flink_jemalloc_active is defined %}
+Environment="LD_PRELOAD={{ flink_jemalloc_path }}"
+{% endif %}
+
+ExecStart={{ flink_install_path }}/bin/jobmanager.sh start
+ExecStop={{ flink_install_path }}/bin/jobmanager.sh stop
+
+User={{ flink_user }}
+{% if flink_max_open_files is defined %}
+# Specifies the maximum file descriptor number that can be opened by this process
+LimitNOFILE={{ flink_max_open_files }}
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target
