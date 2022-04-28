@@ -20,10 +20,11 @@ flink_jobs_path: "{{ flink_data_path }}/jobs"
 flink_extra_path: []
 
 # Download paths
-flink_mirror: "https://archive.apache.org/dist/flink"
+flink_mirror: "https://downloads.apache.org/flink"
+flink_mirror_archive: "https://archive.apache.org/dist/flink"
 flink_package_name: "flink-{{ flink_version }}-bin-scala_{{ flink_scala_version }}"
 flink_package: "{{ flink_package_name }}.tgz"
-flink_bin_url: "{{ flink_mirror }}/flink-{{ flink_version }}/{{ flink_package }}"
+flink_bin_url: "/flink-{{ flink_version }}/{{ flink_package }}"
 
 # Templates path
 flink_jobmanger_service_template_path: templates/flink-jobmanager.service.j2
