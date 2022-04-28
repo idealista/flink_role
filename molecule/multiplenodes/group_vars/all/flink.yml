@@ -1,6 +1,6 @@
 ---
 
-flink_version: 1.14.2
+flink_version: 1.15.0
 flink_user: flink
 flink_group: flink
 flink_service_state: started

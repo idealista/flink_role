@@ -1,7 +1,7 @@
 ---
 
 ## General
-flink_version: 1.14.2
+flink_version: 1.15.0
 flink_scala_version: 2.12
 
 # Owner
@@ -37,11 +37,17 @@ flink_slaves_template_path: templates/slaves.j2
 flink_configuration:
     jobmanager.rpc.address: localhost
     jobmanager.rpc.port: 6123
+    jobmanager.bind-host: localhost
     jobmanager.memory.process.size: 1600m
+    taskmanager.bind-host: localhost
+    taskmanager.host: localhost
     taskmanager.memory.process.size: 1728m
     taskmanager.numberOfTaskSlots: 1
     parallelism.default: 1
     jobmanager.execution.failover-strategy: region
+    rest.address: localhost
+    rest.bind-address: localhost
+
 
 flink_manager_type: [jobmanager, taskmanager, history]
 
