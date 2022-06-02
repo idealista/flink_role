@@ -44,7 +44,7 @@
       - "log4j.properties"
       - "flink-conf.yml"
       - "masters"
-      - "slaves"
+      - "workers"
 
 - name: FLINK | Finding default config files
   find:
@@ -77,7 +77,7 @@
   with_items:
     - { template: "{{ flink_conf_yaml_template_path }}", file: flink-conf.yaml }
     - { template: "{{ flink_masters_template_path }}", file: masters }
-    - { template: "{{ flink_slaves_template_path }}", file: slaves }
+    - { template: "{{ flink_workers_template_path }}", file: workers }
   notify: restart flink
 
 - name: FLINK | Create log4j file

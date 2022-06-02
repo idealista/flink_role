@@ -28,4 +28,4 @@ flink_configuration:
   metrics.reporter.prometheus.port: 9249
 
 flink_masters: [ "{{ hostvars['flink-master1']['ansible_default_ipv4']['address'] }}:8081" ]
-flink_slaves: [ "{{ hostvars['flink-worker1']['ansible_default_ipv4']['address'] }}" ]
+flink_workers: [ "{{ hostvars['flink-worker1']['ansible_default_ipv4']['address'] }}" ]
