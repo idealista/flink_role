@@ -32,7 +32,7 @@ flink_taskmanager_service_template_path: templates/flink-taskmanager.service.j2
 flink_history_service_template_path: templates/flink-history.service.j2
 flink_conf_yaml_template_path: templates/flink-conf.yaml.j2
 flink_masters_template_path: templates/masters.j2
-flink_slaves_template_path: templates/slaves.j2
+flink_workers_template_path: templates/workers.j2
 
 ### Configuration
 flink_configuration:
@@ -55,8 +55,8 @@ flink_manager_type: [jobmanager, taskmanager, history]
 # Masters, host:port array
 flink_masters: ['localhost:8081']
 
-# Slaves, hosts array
-flink_slaves: ['localhost']
+# Workers, hosts array
+flink_workers: ['localhost']
 
 ### Log configuration
 # flink_log4j_template_path: templates/log4j.properties.j2
