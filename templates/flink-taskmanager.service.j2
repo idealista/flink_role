@@ -6,9 +6,9 @@ After=network.target
 Type=forking
 Restart=on-failure
 {% if flink_env_variables | length > 0 %}
-{%{% for var in flink_env_variables | select('!=', '')  %}
+{% for var in flink_env_variables | select('!=', '')  %}
 Environment="{{ var }}"
-{% endfor %}%}
+{% endfor %}
 {% endif %}
 
 ExecStart={{ flink_install_path }}/bin/taskmanager.sh start
