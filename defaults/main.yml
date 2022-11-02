@@ -85,6 +85,13 @@ flink_jemalloc_active: true
 flink_jemalloc_libs: libjemalloc-dev
 flink_jemalloc_path: "/usr/lib/x86_64-linux-gnu/libjemalloc.so"
 
+## env variables
+flink_env_variables:
+  - "{% if flink_jemalloc_libs is defined %}LD_PRELOAD={{flink_jemalloc_libs }}{% endif %}"
+  - "{% if aws_acces_key_id is defined %}AWS_ACCESS_KEY_ID={{ aws_acces_key_id }}{% endif %}"
+  - "{% if aws_secret_access_key is defined %}AWS_SECRET_ACCESS_KEY={{ aws_secret_access_key }}{% endif %}"
+
+
 # Requirements
 flink_required_libs:
     - wget

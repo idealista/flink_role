@@ -14,6 +14,11 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Changed
 *[#<issue_number>](https://github.com/idealista/flink_role/issues/<issue_number>) \<Change description\>* @\<author\>
 
+## [1.2.0](https://github.com/idealista/flink_role/tree/1.2.0)
+### [Full Changelog](https://github.com/idealista/flink_role/compare/1.1.0...1.2.0)
+### ADDED
+- *Adding optional env variables to service* @plozano94
+
 
 ## [1.1.0](https://github.com/idealista/flink_role/tree/1.1.0)
 ### [Full Changelog](https://github.com/idealista/flink_role/compare/1.0.0...1.1.0)
