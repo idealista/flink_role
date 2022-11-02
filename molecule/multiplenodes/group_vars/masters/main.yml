@@ -1,3 +1,5 @@
 ---
 
 flink_manager_type: [jobmanager]
+aws_acces_key_id: aa
+aws_secret_access_key: aa

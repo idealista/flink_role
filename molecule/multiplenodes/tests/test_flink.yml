@@ -14,6 +14,7 @@ file:
   /opt/flink/plugins/metrics-prometheus/flink-metrics-prometheus-1.15.0.jar:
     exists: true
 
+
 http:
   http://localhost:9249:
     status: 200
@@ -27,4 +28,5 @@ command:
     stderr: []
     timeout: 10000 # in milliseconds
     skip: false
+
 
