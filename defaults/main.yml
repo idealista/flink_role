@@ -85,6 +85,11 @@ flink_jemalloc_active: true
 flink_jemalloc_libs: libjemalloc-dev
 flink_jemalloc_path: "/usr/lib/x86_64-linux-gnu/libjemalloc.so"
 
+## env variables
+flink_env_variables:
+  - "{% if flink_jemalloc_libs is defined %}LD_PRELOAD={{flink_jemalloc_libs }}{% endif %}"
+
+
 # Requirements
 flink_required_libs:
     - wget

@@ -5,8 +5,10 @@ After=network.target
 [Service]
 Type=forking
 Restart=on-failure
-{% if flink_jemalloc_active is defined %}
-Environment="LD_PRELOAD={{ flink_jemalloc_path }}"
+{% if flink_env_variables | length > 0 %}
+{% for var in flink_env_variables | select('!=', '')  %}
+Environment="{{ var }}"
+{% endfor %}
 {% endif %}
 
 ExecStart={{ flink_install_path }}/bin/jobmanager.sh start

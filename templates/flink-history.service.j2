@@ -5,6 +5,11 @@ After=network.target
 [Service]
 Type=forking
 Restart=on-failure
+{% if flink_env_variables | length > 0 %}
+{% for var in flink_env_variables | select('!=', '')  %}
+Environment="{{ var }}"
+{% endfor %}
+{% endif %}
 
 ExecStart={{ flink_install_path }}/bin/historyserver.sh start
 ExecStop={{ flink_install_path }}/bin/historyserver.sh stop
