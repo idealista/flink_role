@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/flink_role/tree/develop)
 ### Changed
+- *Modified log directory permission* @amanzanotejon
+
 ### Added
 ### Removed
 ### Fixed
