@@ -27,7 +27,7 @@
     owner: "{{ flink_user }}"
     group: "{{ flink_group }}"
     recurse: true
-    mode: 01777
+    mode: 0755
   with_items:
     - "{{ flink_log_path }}"
 
