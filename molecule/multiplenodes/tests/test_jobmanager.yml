@@ -9,6 +9,6 @@ file:
   /lib/systemd/system/flink-jobmanager.service:
     exists: true
     contains:
-      - Environment="LD_PRELOAD=libjemalloc-dev"
+      - Environment="LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so"
       - Environment="AWS_ACCESS_KEY_ID=aa"
       - Environment="AWS_SECRET_ACCESS_KEY=aa"
