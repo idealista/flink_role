@@ -14,6 +14,11 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Changed
 *[#<issue_number>](https://github.com/idealista/flink_role/issues/<issue_number>) \<Change description\>* @\<author\>
 
+## [1.5.0](https://github.com/idealista/flink_role/tree/1.5.0)
+### [Full Changelog](https://github.com/idealista/flink_role/compare/1.4.0...1.5.0)
+### ADDED
+- *Added configuration to limit restarting services* @smontero
+
 ## [1.4.0](https://github.com/idealista/flink_role/tree/1.4.0)
 ### [Full Changelog](https://github.com/idealista/flink_role/compare/1.3.0...1.4.0)
 ### ADDED
