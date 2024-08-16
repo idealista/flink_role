@@ -68,6 +68,9 @@ flink_workers: ['localhost']
 flink_service_enabled: true
 # current state: started, stopped
 flink_service_state: started
+flink_service_start_limit_burst: 5
+flink_service_start_limit_interval_sec: 400
+flink_service_restart_sec: 60
 
 ## Miscellaneous
 flink_force_reinstall: false

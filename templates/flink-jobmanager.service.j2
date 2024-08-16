@@ -1,10 +1,13 @@
 [Unit]
 Description=Apache Flink
 After=network.target
+StartLimitIntervalSec={{ flink_service_start_limit_interval_sec }}
+StartLimitBurst={{ flink_service_start_limit_burst }}
 
 [Service]
 Type=forking
 Restart=on-failure
+RestartSec={{ flink_service_restart_sec }}
 {% if flink_env_variables | length > 0 %}
 {% for var in flink_env_variables | select('!=', '')  %}
 Environment="{{ var }}"
