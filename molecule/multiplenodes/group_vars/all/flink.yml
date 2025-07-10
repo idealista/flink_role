@@ -1,6 +1,6 @@
 ---
 
-flink_version: 1.15.0
+flink_version: 1.19.1
 flink_user: flink
 flink_group: flink
 flink_service_state: started
@@ -24,8 +24,8 @@ flink_configuration:
   jobmanager.execution.failover-strategy: region
   io.tmp.dirs: "{{ flink_io_tmp_dirs }}"
   # Metrics
-  metrics.reporter.prometheus.class: org.apache.flink.metrics.prometheus.PrometheusReporter
-  metrics.reporter.prometheus.port: 9249
+  metrics.reporter.prom.factory.class: org.apache.flink.metrics.prometheus.PrometheusReporterFactory
+  metrics.reporter.prom.port: 9249
 
 flink_masters: [ "{{ hostvars['flink-master1']['ansible_default_ipv4']['address'] }}:8081" ]
 flink_workers: [ "{{ hostvars['flink-worker1']['ansible_default_ipv4']['address'] }}" ]

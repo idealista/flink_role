@@ -1,6 +1,6 @@
 ---
 
-flink_version: 1.15.0
+flink_version: 1.19.1
 flink_user: flink
 flink_group: flink
 flink_install_path: "/opt/flink"
@@ -30,4 +30,7 @@ flink_configuration:
   jobmanager.execution.failover-strategy: region
   jobmanager.archive.fs.dir: "file://{{ archive_path }}"
   historyserver.archive.fs.dir: "file://{{ archive_path }}"
+    # Metrics
+  metrics.reporter.prom.factory.class: org.apache.flink.metrics.prometheus.PrometheusReporterFactory
+  metrics.reporter.prom.port: 9249
 

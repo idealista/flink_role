@@ -6,12 +6,12 @@ file:
     filetype: directory
     owner: {{ flink_user }}
     group: {{ flink_group }}
-  /opt/flink/conf/flink-conf.yaml:
+  /opt/flink/conf/config.yaml:
     exists: true
     contains:
       - org.apache.flink.metrics.prometheus.PrometheusReporter
       - 9249
-  /opt/flink/plugins/metrics-prometheus/flink-metrics-prometheus-1.15.0.jar:
+  /opt/flink/plugins/metrics-prometheus/flink-metrics-prometheus-1.19.1.jar:
     exists: true
 
 
@@ -24,7 +24,7 @@ command:
     exit-status: 0
     exec: /opt/flink/bin/flink -v
     stdout:
-      - "Version: 1.15.0"
+      - "Version: 1.19.1"
     stderr: []
     timeout: 10000 # in milliseconds
     skip: false

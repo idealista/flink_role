@@ -52,7 +52,7 @@ command:
     exit-status: 0
     exec: "/opt/flink/bin/flink -v"
     stdout:
-      - "Version: 1.15.0"
+      - "Version: 1.19.1"
     stderr: []
     timeout: 10000 # in milliseconds
     skip: false
