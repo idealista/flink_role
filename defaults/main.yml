@@ -1,7 +1,7 @@
 ---
 
 ## General
-flink_version: 1.15.0
+flink_version: 1.19.1
 flink_scala_version: 2.12
 
 # Owner

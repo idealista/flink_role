@@ -75,7 +75,7 @@
     group: "{{ flink_group }}"
     mode: 0644
   with_items:
-    - { template: "{{ flink_conf_yaml_template_path }}", file: flink-conf.yaml }
+    - { template: "{{ flink_conf_yaml_template_path }}", file: config.yaml }
     - { template: "{{ flink_masters_template_path }}", file: masters }
     - { template: "{{ flink_workers_template_path }}", file: workers }
   notify: restart flink

@@ -14,6 +14,13 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Changed
 *[#<issue_number>](https://github.com/idealista/flink_role/issues/<issue_number>) \<Change description\>* @\<author\>
 
+## [2.0.0](https://github.com/idealista/flink_role/tree/1.6.0)
+### [Full Changelog](https://github.com/idealista/flink_role/compare/1.4.0...1.5.0)
+### MODIFIED
+- *Rename flink-config.yml to conf.yml* 
+- *Force boolean values in flink config to lowercase* 
+- *Breaking compatibility for flink version < 1.19.1 
+
 ## [1.5.0](https://github.com/idealista/flink_role/tree/1.5.0)
 ### [Full Changelog](https://github.com/idealista/flink_role/compare/1.4.0...1.5.0)
 ### ADDED

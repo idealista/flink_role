@@ -35,8 +35,8 @@
         recurse: true
     - name: FLINK | Python | Copy plugin
       copy:
-        src: "{{ flink_install_path }}/opt/flink-python_{{ flink_scala_version }}-{{ flink_version }}.jar"
-        dest: "{{ flink_install_path }}/plugins/python/flink-python_{{ flink_scala_version }}-{{ flink_version }}.jar"
+        src: "{{ flink_install_path }}/opt/flink-python-{{ flink_version }}.jar"
+        dest: "{{ flink_install_path }}/plugins/python/flink-python-{{ flink_version }}.jar"
         owner: "{{ flink_user }}"
         group: "{{ flink_group }}"
         remote_src: yes
